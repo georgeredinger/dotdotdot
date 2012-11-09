@@ -4,6 +4,8 @@
 
 By default, this comes with ssh and zsh examples, and my tmux configuration, which includes tmux-powerline
 
+## WARNING: might destroy all your dotfiles. Back them up yourself.
+
 ### Installation and execution
 
     git clone git@github.com:vishvish/dotdotdot.git
