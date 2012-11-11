@@ -1,5 +1,8 @@
+#!/usr/bin/env ruby
+
 require 'psych'
 require 'pathname'
+require 'fileutils'
 
 class Dotdotdot
 
@@ -49,9 +52,16 @@ class Dotdotdot
   def disable_symlinks
     @all.each do | key, value |
       target = File.join(Dir.home, ".#{Pathname.new(key).basename}")
-      if File.symlink?(target)
-        File.unlink(target)
+      begin
+        if File.directory?(target)
+          FileUtils::remove_dir(target)
+        elsif File.exists?(target)
+          File.unlink(target)
+        end
+      rescue Exception => e
+        puts e        
       end
+      
     end
   end
 
